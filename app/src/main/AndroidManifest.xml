@@ -29,10 +29,10 @@
         android:required="true"/>
 
     <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:smallScreens="true"
+        android:requiresSmallestWidthDp="720"
+        android:largeScreens="false"
+        android:normalScreens="false"
+        android:smallScreens="false"
         android:xlargeScreens="true"/>
 
     <application

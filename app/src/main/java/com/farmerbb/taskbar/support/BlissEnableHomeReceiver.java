@@ -25,19 +25,22 @@ import android.content.pm.PackageManager;
 public class BlissEnableHomeReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Send broadcast to main Taskbar app to enable HomeActivity
-        if(isSystemApp(context)) {
-            Intent enableHomeIntent = new Intent("com.farmerbb.taskbar.ENABLE_HOME");
-            enableHomeIntent.putExtra("enable_freeform_hack", true);
-            enableHomeIntent.putExtra("enable_running_apps_only", true);
-            context.sendBroadcast(enableHomeIntent);
-        }
+        if(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+            // Send broadcast to main Taskbar app to enable HomeActivity
+            if(isSystemApp(context)) {
+                Intent enableHomeIntent = new Intent("com.farmerbb.taskbar.ENABLE_HOME");
+                enableHomeIntent.putExtra("enable_freeform_hack", true);
+                enableHomeIntent.putExtra("enable_running_apps_only", true);
+                enableHomeIntent.putExtra("enable_navigation_bar_buttons", true);
+                context.sendBroadcast(enableHomeIntent);
+            }
 
-        // This receiver should only run once, so disable it
-        ComponentName component = new ComponentName(context, getClass());
-        context.getPackageManager().setComponentEnabledSetting(component,
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
+            // This receiver should only run once, so disable it
+            ComponentName component = new ComponentName(context, getClass());
+            context.getPackageManager().setComponentEnabledSetting(component,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP);
+        }
     }
 
     private boolean isSystemApp(Context context) {
