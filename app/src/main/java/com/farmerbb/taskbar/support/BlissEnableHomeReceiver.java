@@ -25,10 +25,11 @@ import android.content.pm.PackageManager;
 public class BlissEnableHomeReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+        if(Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             // Send broadcast to main Taskbar app to enable HomeActivity
             if(isSystemApp(context)) {
                 Intent enableHomeIntent = new Intent("com.farmerbb.taskbar.ENABLE_HOME");
+                enableHomeIntent.setPackage("com.farmerbb.taskbar");
                 enableHomeIntent.putExtra("enable_freeform_hack", true);
                 enableHomeIntent.putExtra("enable_running_apps_only", true);
                 enableHomeIntent.putExtra("enable_navigation_bar_buttons", true);
