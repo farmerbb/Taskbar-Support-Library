@@ -30,9 +30,6 @@ public class BlissEnableHomeReceiver extends BroadcastReceiver {
             if(isSystemApp(context)) {
                 Intent enableHomeIntent = new Intent("com.farmerbb.taskbar.ENABLE_HOME");
                 enableHomeIntent.setPackage("com.farmerbb.taskbar");
-                enableHomeIntent.putExtra("enable_freeform_hack", true);
-                enableHomeIntent.putExtra("enable_running_apps_only", true);
-                enableHomeIntent.putExtra("enable_navigation_bar_buttons", true);
                 context.sendBroadcast(enableHomeIntent);
             }
 

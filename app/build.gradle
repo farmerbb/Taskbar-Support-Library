@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.1"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.farmerbb.taskbar.support"
         minSdkVersion 21
         targetSdkVersion 27
 
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.1"
     }
 
     signingConfigs {
