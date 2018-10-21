@@ -1,16 +1,22 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+}
+
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "com.farmerbb.taskbar.support"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
 
-        versionCode 5
-        versionName "1.1"
+        versionCode 6
+        versionName "1.2"
+
+        resConfigs "en"
     }
 
     signingConfigs {
@@ -31,14 +37,17 @@ android {
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
             signingConfig signingConfigs.release
             manifestPlaceholders = [appName: "@string/app_name"]
+
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${project.parent.name.replace('-', ' ')}-${defaultConfig.versionName}.apk"
+                }
+            }
         }
     }
 }
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-

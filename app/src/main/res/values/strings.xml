@@ -16,7 +16,8 @@
 
 <resources>
 
-    <string name="app_name">Taskbar Support Library for Bliss-x86</string>
+    <string name="app_name">Taskbar Support Library for Bliss OS</string>
     <string name="app_name_debug">@string/app_name</string>
+    <string name="taskbar">Taskbar</string>
 
 </resources>
