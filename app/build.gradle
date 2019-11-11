@@ -5,18 +5,25 @@ repositories {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "com.farmerbb.taskbar.support"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 23
 
-        versionCode 6
-        versionName "1.2"
+        //noinspection OldTargetApi
+        targetSdkVersion 27
+
+        versionCode 7
+        versionName "1.3"
 
         resConfigs "en"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     signingConfigs {
@@ -39,7 +46,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             manifestPlaceholders = [appName: "@string/app_name"]
 
